@@ -96,7 +96,7 @@ public class Sb002Application implements CommandLineRunner {
 	}
 
 	// rechercher la consultation ayant id=3
-	@GetMapping("/consultation/rechercher")
+	@GetMapping("/consultations/rechercher")
 	public Consultation rechercherConsultation() {
 		return consultationMapper.rechercherConsultation();
 	}
@@ -115,7 +115,7 @@ public class Sb002Application implements CommandLineRunner {
 	}*/
 
 	// parcourir les lignes de la consultation trouvée et afficher les noms des médicaments
-	@GetMapping("/traitement/rechercher")
+	@GetMapping("/traitements/rechercher")
 	public List<String> rechercherTraitement() {
 		return traitementMapper.rechercherTraitement();
 	}
