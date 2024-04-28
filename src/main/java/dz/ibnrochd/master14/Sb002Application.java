@@ -35,6 +35,7 @@ public class Sb002Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		/*
 		// TODO : récupérer la liste de tous les patients puis afficher leurs noms
 		List<Patient> patients = patientMapper.listePatients();
 
@@ -73,6 +74,7 @@ public class Sb002Application implements CommandLineRunner {
 		List<String> traitementsNoms = traitementMapper.rechercherTraitement(consultation.getId());
 
 		traitementsNoms.forEach(System.out::println);
+		*/
 	}
 
 }
