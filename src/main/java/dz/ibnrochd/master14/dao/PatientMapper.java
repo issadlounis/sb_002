@@ -11,11 +11,20 @@ public interface PatientMapper {
     @Select("SELECT * FROM patient")
     List<Patient> listePatients();
 
-    @Select("SELECT * FROM patient WHERE nom LIKE '%Yahi%'")
-    List<Patient> rechercherPatients();
+    @Select("SELECT * FROM patient WHERE id=#{id}")
+    Patient recupererPatient(int id);
 
     @Insert("INSERT INTO patient(nom, prenom, sexe, date_naissance, numero_telephone, adresse) VALUES(#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})")
-    void savePatient(Patient patient);
+    void creerPatient(Patient patient);
+
+    @Update("UPDATE patient SET nom=#{patient.nom}, prenom=#{patient.prenom}, sexe=#{patient.sexe}, date_naissance=#{patient.dateNaissance}, numero_telephone=#{patient.numeroTelephone}, adresse=#{patient.adresse} WHERE id=#{id}")
+    void modifierPatient(int id, Patient patient);
+
+    @Delete("DELETE FROM patient WHERE id=#{id}")
+    void supprimerPatient(int id);
+
+    @Select("SELECT * FROM patient WHERE LOWER(nom) LIKE CONCAT('%', LOWER(#{nom}), '%')")
+    List<Patient> rechercherPatients(@Param("nom") String nom);
 
 	// TODO ajouter la signature d'une méthode pour rechercher des patients par leurs noms (convention Spring Data)
 }

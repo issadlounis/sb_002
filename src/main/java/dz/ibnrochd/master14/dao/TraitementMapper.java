@@ -1,12 +1,27 @@
 package dz.ibnrochd.master14.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import dz.ibnrochd.master14.model.Traitement;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface TraitementMapper {
-    @Select("SELECT t.nom FROM consultation c, traitement t, ligne_consultation lc WHERE c.id = lc.id_consultation AND t.id = lc.id_traitement AND c.id = 3")
-    List<String> rechercherTraitement(int idConsultation);
+    @Select("SELECT * FROM traitement")
+    List<Traitement> listeTraitements();
+
+    @Select("SELECT * FROM traitement WHERE id=#{id}")
+    Traitement recupererTraitement(int id);
+
+    @Insert("INSERT INTO traitement(nom) VALUES(#{nom})")
+    void creerTraitement(Traitement traitement);
+
+    @Update("UPDATE traitement SET nom=#{traitement.nom} WHERE id=#{id}")
+    void modifierTraitement(int id, Traitement traitement);
+
+    @Delete("DELETE FROM traitement WHERE id=#{id}")
+    void supprimerTraitement(int id);
+
+    @Select("SELECT * FROM traitement WHERE LOWER(nom) LIKE CONCAT('%', LOWER(#{nom}), '%')")
+    List<Traitement> rechercherTraitements(@Param("nom") String nom);
 }
