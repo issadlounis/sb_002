@@ -63,4 +63,14 @@ public class Consultation implements Serializable {
 	public void setTraitements(List<Traitement> traitements) {
 		this.traitements = traitements;
 	}
+
+	@Override
+	public String toString() {
+		return "Consultation{id=" + id +
+				", motif='" + motif + '\'' +
+				", dateConsultation='" + dateConsultation + '\'' +
+				", idPatient='" + idPatient + '\'' +
+				", traitements='" + traitements +
+				'}';
+	}
 }

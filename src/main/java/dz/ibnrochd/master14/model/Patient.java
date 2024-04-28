@@ -116,4 +116,16 @@ public class Patient implements Serializable {
 		this.rendezVous = rendezVous;
 	}
 
+	@Override
+	public String toString() {
+		return "Patient{id=" + id +
+				", nom='" + nom + '\'' +
+				", prenom='" + prenom + '\'' +
+				", sexe='" + sexe + '\'' +
+				", dateNaissance='" + dateNaissance + '\'' +
+				", numeroTelephone='" + numeroTelephone + '\'' +
+				", adresse='" + adresse +
+				'}';
+	}
+
 }
