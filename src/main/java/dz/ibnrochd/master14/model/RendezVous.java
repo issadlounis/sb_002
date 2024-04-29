@@ -44,7 +44,7 @@ public class RendezVous implements Serializable {
 
 	public int getIdPatient() { return idPatient; }
 
-	public void setPatient(int idPatient) {
+	public void setIdPatient(int idPatient) {
 		this.idPatient = idPatient;
 	}
     

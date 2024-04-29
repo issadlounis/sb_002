@@ -3,6 +3,7 @@ package dz.ibnrochd.master14.controller;
 import dz.ibnrochd.master14.Sb002Application;
 import dz.ibnrochd.master14.business.impl.PatientService;
 import dz.ibnrochd.master14.model.Patient;
+import dz.ibnrochd.master14.model.RendezVous;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.http.HttpStatus;
@@ -19,12 +20,9 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    public static void main(String[] args) {
-        SpringApplication.run(Sb002Application.class, args);
-    }
-
+    //Patients
     // TODO : récupérer la liste de tous les patients puis afficher leurs noms
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<Map<String, Object>> listePatients() {
         List<Patient> patients = patientService.listePatients();
         List<String> patientsNoms = patients.stream().map(Patient::getNom).toList();
@@ -85,4 +83,28 @@ public class PatientController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    // Rendez-vous
+    // liste des rendez-vous d'un patient
+    @GetMapping("/{idPatient}/rendez-vous")
+    public List<RendezVous> listeRendezVous(@PathVariable("id") int idPatient) {
+        return patientService.listeRendezVous(idPatient);
+    }
+
+    // prendre un rendez-vous
+    @PostMapping("/rendez-vous")
+    public void prendreRendezVous(@RequestBody RendezVous rendezVous) {
+        RendezVous newRendezVous = new RendezVous();
+        newRendezVous.setDateRdv(rendezVous.getDateRdv());
+        newRendezVous.setIdPatient(rendezVous.getIdPatient());
+
+        patientService.prendreRendezVous(newRendezVous);
+    }
+
+    // supprimer un rendez-vous
+    @DeleteMapping("/rendez-vous/{id}")
+    public void supprimerRendezVous(@PathVariable("id") int id) {
+        patientService.supprimerRendezVous(id);
+    }
+
 }

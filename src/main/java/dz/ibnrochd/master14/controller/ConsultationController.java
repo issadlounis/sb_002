@@ -15,12 +15,8 @@ public class ConsultationController {
     @Autowired
     ConsultationService consultationService;
 
-    public static void main(String[] args) {
-        SpringApplication.run(Sb002Application.class, args);
-    }
-
     // récupérer la liste de tous les consultations
-    @GetMapping("/")
+    @GetMapping
     public List<Consultation> listeConsultations() {
         return consultationService.listeConsultations();
     }

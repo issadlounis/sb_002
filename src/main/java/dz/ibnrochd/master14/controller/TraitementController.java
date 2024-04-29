@@ -15,12 +15,8 @@ public class TraitementController {
     @Autowired
     TraitementService traitementService;
 
-    public static void main(String[] args) {
-        SpringApplication.run(Sb002Application.class, args);
-    }
-
     // récupérer la liste de tous les traitements
-    @GetMapping("/")
+    @GetMapping
     public List<Traitement> listeTraitements() {
         return traitementService.listeTraitements();
     }
