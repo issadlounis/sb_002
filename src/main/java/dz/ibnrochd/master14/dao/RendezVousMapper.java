@@ -1,5 +1,6 @@
 package dz.ibnrochd.master14.dao;
 
+import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.RendezVous;
 import org.apache.ibatis.annotations.*;
 
@@ -25,6 +26,9 @@ public interface RendezVousMapper {
 
     @Insert("INSERT INTO rendez_vous(date_rdv, id_patient) VALUES(#{dateRdv}, #{idPatient})")
     void prendreRendezVous(RendezVous rendezVous);
+
+    @Update("UPDATE rendez_vous SET date_rdv=#{rendezVous.dateRdv} WHERE id=#{id}")
+    void modifierRendezVous(int id, RendezVous rendezVous);
 
     @Delete("DELETE FROM rendez_vous WHERE id=#{id}")
     void supprimerRendezVous(int id);

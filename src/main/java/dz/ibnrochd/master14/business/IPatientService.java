@@ -26,5 +26,7 @@ public interface IPatientService {
 
     public void prendreRendezVous(RendezVous rendezVous);
 
+    public void modifierRendezVous(int id, RendezVous rendezVous);
+
     public void supprimerRendezVous(int id);
 }

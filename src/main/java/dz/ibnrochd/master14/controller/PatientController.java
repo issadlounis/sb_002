@@ -107,6 +107,12 @@ public class PatientController {
         patientService.prendreRendezVous(newRendezVous);
     }
 
+    // modifier un rendez-vous
+    @PutMapping("/rendez-vous/{id}")
+    public void modifierRendezVous(@PathVariable("id") int id, @RequestBody RendezVous rendezVous) {
+        patientService.modifierRendezVous(id, rendezVous);
+    }
+
     // supprimer un rendez-vous
     @DeleteMapping("/rendez-vous/{id}")
     public void supprimerRendezVous(@PathVariable("id") int id) {

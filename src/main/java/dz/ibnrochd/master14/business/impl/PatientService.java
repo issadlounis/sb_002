@@ -66,6 +66,11 @@ public class PatientService implements IPatientService {
     }
 
     @Override
+    public void modifierRendezVous(int id, RendezVous rendezVous) {
+        rendezVousMapper.modifierRendezVous(id, rendezVous);
+    }
+
+    @Override
     public void supprimerRendezVous(int id) {
         rendezVousMapper.supprimerRendezVous(id);
     }
