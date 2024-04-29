@@ -6,6 +6,7 @@ import dz.ibnrochd.master14.model.LigneConsultation;
 import java.util.List;
 
 public interface IConsultationService {
+    // Consultations
     public List<Consultation> listeConsultations();
 
     public Consultation recupererConsultation(int id);
@@ -18,10 +19,12 @@ public interface IConsultationService {
 
     public List<Consultation> rechercherConsultations(String motif);
 
-    // Ligne consultation
+    // Lignes consultations
     public List<LigneConsultation> listeLigneConsultation();
 
-    public void prendreLigneConsultation(LigneConsultation ligneConsultation);
+    public List<LigneConsultation> listeLigneConsultationConsultation(int idConsultation);
+
+    public void creerLigneConsultation(LigneConsultation ligneConsultation);
 
     public void modifierLigneConsultation(int id, LigneConsultation ligneConsultation);
 

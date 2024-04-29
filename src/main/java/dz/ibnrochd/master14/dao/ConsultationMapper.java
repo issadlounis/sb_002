@@ -30,7 +30,7 @@ public interface ConsultationMapper {
     @Insert("INSERT INTO consultation(motif, date_consultation, id_patient) VALUES(#{motif}, #{dateConsultation}, #{idPatient})")
     void creerConsultation(Consultation consultation);
 
-    @Update("UPDATE consultation SET motif=#{consultation.motif}, date_consultation=#{consultation.dateConsultation}, id_patient=#{consultation.idPatient} WHERE id=#{id}")
+    @Update("UPDATE consultation SET motif=#{consultation.motif}, date_consultation=#{consultation.dateConsultation} WHERE id=#{id}")
     void modifierConsultation(int id, Consultation consultation);
 
     @Delete("DELETE FROM consultation WHERE id=#{id}")

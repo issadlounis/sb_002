@@ -50,15 +50,20 @@ public class ConsultationService implements IConsultationService {
         return consultationMapper.rechercherConsultations(motif);
     }
 
-    // Ligne consultation
+    // Lignes consultations
     @Override
     public List<LigneConsultation> listeLigneConsultation() {
         return ligneConsultationMapper.listeLigneConsultation();
     }
 
     @Override
-    public void prendreLigneConsultation(LigneConsultation ligneConsultation) {
-        ligneConsultationMapper.prendreLigneConsultation(ligneConsultation);
+    public List<LigneConsultation> listeLigneConsultationConsultation(int idConsultation) {
+        return ligneConsultationMapper.listeLigneConsultationConsultation(idConsultation);
+    }
+
+    @Override
+    public void creerLigneConsultation(LigneConsultation ligneConsultation) {
+        ligneConsultationMapper.creerLigneConsultation(ligneConsultation);
     }
 
     @Override
