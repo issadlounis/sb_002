@@ -93,7 +93,7 @@ public class PatientController {
 
     // liste des rendez-vous d'un patient
     @GetMapping("/{idPatient}/rendez-vous")
-    public List<RendezVous> listeRendezVousPatient(@PathVariable("id") int idPatient) {
+    public List<RendezVous> listeRendezVousPatient(@PathVariable("idPatient") int idPatient) {
         return patientService.listeRendezVousPatient(idPatient);
     }
 
