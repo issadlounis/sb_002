@@ -1,6 +1,7 @@
 package dz.ibnrochd.master14.business;
 
 import dz.ibnrochd.master14.model.Consultation;
+import dz.ibnrochd.master14.model.LigneConsultation;
 
 import java.util.List;
 
@@ -16,4 +17,13 @@ public interface IConsultationService {
     public void supprimerConsultation(int id);
 
     public List<Consultation> rechercherConsultations(String motif);
+
+    // Ligne consultation
+    public List<LigneConsultation> listeLigneConsultation();
+
+    public void prendreLigneConsultation(LigneConsultation ligneConsultation);
+
+    public void modifierLigneConsultation(int id, LigneConsultation ligneConsultation);
+
+    public void supprimerLigneConsultation(int id);
 }

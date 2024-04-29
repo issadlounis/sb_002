@@ -1,11 +1,9 @@
 package dz.ibnrochd.master14.controller;
 
-import dz.ibnrochd.master14.Sb002Application;
 import dz.ibnrochd.master14.business.impl.PatientService;
 import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.RendezVous;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +39,7 @@ public class PatientController {
     }
 
     // TODO : créer un nouveau patient (valeurs au choix)  PUIS enregistrer-le
-    @PostMapping("/")
+    @PostMapping
     public void creerPatient(@RequestBody Patient patient) {
         Patient newPatient = new Patient();
         newPatient.setNom(patient.getNom());

@@ -28,7 +28,7 @@ public class TraitementController {
     }
 
     // créer un nouveau traitement
-    @PostMapping("/")
+    @PostMapping
     public void creerTraitement(@RequestBody Traitement traitement) {
         Traitement newTraitement = new Traitement();
         newTraitement.setNom(traitement.getNom());

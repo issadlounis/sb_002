@@ -1,6 +1,5 @@
 package dz.ibnrochd.master14.dao;
 
-import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.RendezVous;
 import org.apache.ibatis.annotations.*;
 
