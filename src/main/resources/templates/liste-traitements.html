@@ -24,9 +24,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th class="text-center" scope="row">1</th>
-                <td class="text-center">Mark</td>
+            <tr th:each="traitement : ${traitements}">
+                <th class="text-center" scope="row" th:text="${traitement.id}"></th>
+                <td class="text-center" th:text="${traitement.nom}"></td>
             </tr>
             </tbody>
         </table>

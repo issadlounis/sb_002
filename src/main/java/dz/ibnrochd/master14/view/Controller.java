@@ -6,14 +6,10 @@ import dz.ibnrochd.master14.business.impl.TraitementService;
 import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.Traitement;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -30,17 +26,16 @@ public class Controller {
 
     //Patients
     // récupérer la liste de tous les patients
-    @GetMapping
+    @GetMapping("/patients")
     public String listePatients(Model model) {
         List<Patient> patients = patientService.listePatients();
         model.addAttribute("patients", patients);
 
-        // Return the name of the Thymeleaf template
         return "liste-patients";
     }
 
     // créer un nouveau patient
-    @PostMapping
+    @PostMapping("/patients")
     public void creerPatient(@RequestBody Patient patient) {
         Patient newPatient = new Patient();
         newPatient.setNom(patient.getNom());
@@ -55,13 +50,16 @@ public class Controller {
 
     // Traitements
     // récupérer la liste de tous les traitements
-    @GetMapping
-    public List<Traitement> listeTraitements() {
-        return traitementService.listeTraitements();
+    @GetMapping("/traitements")
+    public String listeTraitements(Model model) {
+        List<Traitement> traitements = traitementService.listeTraitements();
+        model.addAttribute("traitements", traitements);
+
+        return "liste-traitements";
     }
 
     // créer un nouveau traitement
-    @PostMapping
+    @PostMapping("/traitements")
     public void creerTraitement(@RequestBody Traitement traitement) {
         Traitement newTraitement = new Traitement();
         newTraitement.setNom(traitement.getNom());
