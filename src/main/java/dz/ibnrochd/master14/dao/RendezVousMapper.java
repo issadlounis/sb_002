@@ -15,7 +15,7 @@ public interface RendezVousMapper {
     })
     List<RendezVous> listeRendezVous();
 
-    @Select("SELECT * FROM rendez_vous WHERE idPatient=#{idPatient}")
+    @Select("SELECT * FROM rendez_vous WHERE id_patient=#{idPatient}")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "dateRdv", column = "date_rdv"),
