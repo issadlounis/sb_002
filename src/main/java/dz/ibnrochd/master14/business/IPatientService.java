@@ -20,7 +20,9 @@ public interface IPatientService {
     public List<Patient> rechercherPatients(String nom);
 
     // Rendez-vous
-    public List<RendezVous> listeRendezVous(int idPatient);
+    public List<RendezVous> listeRendezVous();
+
+    public List<RendezVous> listeRendezVousPatient(int idPatient);
 
     public void prendreRendezVous(RendezVous rendezVous);
 

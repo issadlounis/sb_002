@@ -85,10 +85,16 @@ public class PatientController {
     }
 
     // Rendez-vous
+    // liste des rendez-vous
+    @GetMapping("/rendez-vous")
+    public List<RendezVous> listeRendezVous() {
+        return patientService.listeRendezVous();
+    }
+
     // liste des rendez-vous d'un patient
     @GetMapping("/{idPatient}/rendez-vous")
-    public List<RendezVous> listeRendezVous(@PathVariable("id") int idPatient) {
-        return patientService.listeRendezVous(idPatient);
+    public List<RendezVous> listeRendezVousPatient(@PathVariable("id") int idPatient) {
+        return patientService.listeRendezVousPatient(idPatient);
     }
 
     // prendre un rendez-vous

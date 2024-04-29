@@ -51,8 +51,13 @@ public class PatientService implements IPatientService {
 
     // Rendez-vous
     @Override
-    public List<RendezVous> listeRendezVous(int idPatient) {
-        return rendezVousMapper.listeRendezVous(idPatient);
+    public List<RendezVous> listeRendezVous() {
+        return rendezVousMapper.listeRendezVous();
+    }
+
+    @Override
+    public List<RendezVous> listeRendezVousPatient(int idPatient) {
+        return rendezVousMapper.listeRendezVousPatient(idPatient);
     }
 
     @Override
