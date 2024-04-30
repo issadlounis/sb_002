@@ -3,7 +3,6 @@ package dz.ibnrochd.master14.controller;
 import dz.ibnrochd.master14.business.impl.ConsultationService;
 import dz.ibnrochd.master14.model.Consultation;
 import dz.ibnrochd.master14.model.LigneConsultation;
-import dz.ibnrochd.master14.model.RendezVous;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,7 +65,7 @@ public class ConsultationController {
 
     // liste des lignes-consultations d'une consultation
     @GetMapping("/{idConsultation}/lignes-consultations")
-    public List<LigneConsultation> listeRendezVousPatient(@PathVariable("idConsultation") int idConsultation) {
+    public List<LigneConsultation> listeLigneConsultationPatient(@PathVariable("idConsultation") int idConsultation) {
         return consultationService.listeLigneConsultationConsultation(idConsultation);
     }
 
