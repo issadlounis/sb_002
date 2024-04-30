@@ -22,6 +22,7 @@ public interface IPatientService {
     // Rendez-vous
     public List<RendezVous> listeRendezVous();
 
+    // Liste des rendez-vous d'un patient
     public List<RendezVous> listeRendezVousPatient(int idPatient);
 
     public void prendreRendezVous(RendezVous rendezVous);

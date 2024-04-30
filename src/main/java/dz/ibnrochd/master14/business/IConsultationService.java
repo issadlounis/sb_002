@@ -22,6 +22,7 @@ public interface IConsultationService {
     // Lignes consultations
     public List<LigneConsultation> listeLigneConsultation();
 
+    // Lignes des consultations d'une consultation
     public List<LigneConsultation> listeLigneConsultationConsultation(int idConsultation);
 
     public void creerLigneConsultation(LigneConsultation ligneConsultation);
