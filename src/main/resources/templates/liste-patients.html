@@ -16,7 +16,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h5>Liste des patients:</h5>
-            <button class="btn btn-sm btn-primary">Ajouter</button>
+            <a href="/patients/ajouter-patient" class="btn btn-sm btn-primary">Ajouter</a>
         </div>
         <table class="table table-striped">
             <thead>
@@ -34,15 +34,20 @@
             <tbody>
             <tr th:each="patient : ${patients}">
                 <th scope="row" th:text="${patient.id}"></th>
-                <td th:text="${patient.nom}">Mark</td>
-                <td th:text="${patient.prenom}">Otto</td>
-                <td th:text="${patient.sexe}">@mdo</td>
-                <td th:text="${patient.dateNaissance}">Mark</td>
-                <td th:text="${patient.numeroTelephone}">Otto</td>
-                <td th:text="${patient.adresse}">@mdo</td>
+                <td th:text="${patient.nom}"></td>
+                <td th:text="${patient.prenom}"></td>
+                <td th:text="${patient.sexe}"></td>
+                <td th:text="${patient.dateNaissance}"></td>
+                <td th:text="${patient.numeroTelephone}"></td>
+                <td th:text="${patient.adresse}"></td>
                 <td>
-                    <button class="btn btn-sm btn-secondary">Modifier</button>
-                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                    <div class="d-flex">
+                        <a th:href="@{'/patients/modifier-patient/' + ${patient.id}}" class="btn btn-sm btn-secondary me-2">Modifier</a>
+                        <form th:action="@{'/patients/supprimer-patient/' + ${patient.id}}" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             </tbody>

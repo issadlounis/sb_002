@@ -1,6 +1,7 @@
 package dz.ibnrochd.master14.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Patient implements Serializable {
 
     private String sexe;
 
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
 
     private String numeroTelephone;
 
@@ -31,7 +32,7 @@ public class Patient implements Serializable {
     
     public Patient() {}
 
-	public Patient(int id, String nom, String prenom, String sexe, Date dateNaissance, String numeroTelephone,
+	public Patient(int id, String nom, String prenom, String sexe, LocalDate dateNaissance, String numeroTelephone,
 			String adresse) {
 		this.id = id;
 		this.nom = nom;
@@ -76,11 +77,11 @@ public class Patient implements Serializable {
 		this.sexe = sexe;
 	}
 
-	public Date getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

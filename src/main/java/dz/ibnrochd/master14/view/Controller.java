@@ -34,18 +34,44 @@ public class Controller {
         return "liste-patients";
     }
 
-    // créer un nouveau patient
-    @PostMapping("/patients")
-    public void creerPatient(@RequestBody Patient patient) {
-        Patient newPatient = new Patient();
-        newPatient.setNom(patient.getNom());
-        newPatient.setPrenom(patient.getPrenom());
-        newPatient.setSexe(patient.getSexe());
-        newPatient.setDateNaissance(patient.getDateNaissance());
-        newPatient.setNumeroTelephone(patient.getNumeroTelephone());
-        newPatient.setAdresse(patient.getAdresse());
+    // afficher le formulaire pour ajouter un patient
+    @GetMapping("/patients/ajouter-patient")
+    public String afficherAjouterPatient(Model model) {
+        model.addAttribute("patient", new Patient());
+        return "ajouter-patient";
+    }
 
-        patientService.creerPatient(newPatient);
+    // créer un nouveau patient
+    @PostMapping("/patients/ajouter-patient")
+    public String creerPatient(@ModelAttribute Patient patient) {
+        patientService.creerPatient(patient);
+
+        return "redirect:/patients";
+    }
+
+    // afficher le formulaire pour modifier un patient
+    @GetMapping("/patients/modifier-patient/{id}")
+    public String modifierAjouterPatient(@PathVariable("id") int id, Model model) {
+        Patient patient = patientService.recupererPatient(id);
+
+        model.addAttribute("patient", patient);
+        return "modifier-patient";
+    }
+
+    // modifier un patient
+    @PostMapping("/patients/modifier-patient/{id}")
+    public String modifierPatient(@PathVariable("id") int id, @ModelAttribute Patient patient) {
+        patientService.modifierPatient(id, patient);
+
+        return "redirect:/patients";
+    }
+
+    // supprimer un patient
+    @PostMapping("/patients/supprimer-patient/{id}")
+    public String supprimerPatient(@PathVariable int id) {
+        patientService.supprimerPatient(id);
+
+        return "redirect:/patients";
     }
 
     // Traitements

@@ -9,13 +9,13 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous"
     />
-    <title>Ajouter patient</title>
+    <title>Modifier patient</title>
 </head>
 <body>
 <div class="my-3">
     <div class="container">
-        <form th:action="@{/patients/ajouter-patient}" th:object="${patient}" method="post" class="w-75 m-auto">
-            <h5 class="mb-3">Ajouter un patient</h5>
+        <form th:action="@{/patients/modifier-patient/{id}(id=${patient.id})}" th:object="${patient}" method="post" class="w-75 m-auto">
+            <h5 class="mb-3">Modifier le patient: <span th:text="${patient.id}"></span></h5>
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom:</label>
                 <input type="text" class="form-control" id="nom" th:field="*{nom}" />
@@ -52,7 +52,7 @@
 
             <div class="mb-3">
                 <label for="nom" class="form-label">Date de naissance:</label>
-                <input type="date" class="form-control" id="dateNaissance" th:field="*{dateNaissance}" />
+                <input type="date" class="form-control" id="dateNaissance" th:value="*{dateNaissance}" th:field="*{{dateNaissance}}" />
             </div>
             <div class="mb-3">
                 <label for="nom" class="form-label">Numéro de téléphone:</label>
@@ -62,7 +62,7 @@
                 <label for="nom" class="form-label">Adresse:</label>
                 <input type="text" class="form-control" id="adresse" th:field="*{adresse}" />
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="submit" class="btn btn-primary">Modifier</button>
         </form>
     </div>
 </div>
