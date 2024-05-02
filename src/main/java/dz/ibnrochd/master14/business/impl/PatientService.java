@@ -6,8 +6,12 @@ import dz.ibnrochd.master14.dao.RendezVousMapper;
 import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.RendezVous;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Service
@@ -30,8 +34,18 @@ public class PatientService implements IPatientService {
     }
 
     @Override
-    public void creerPatient(Patient patient) {
+    public ResponseEntity<?> creerPatient(Patient patient) {
+        var dateNaissancePatient = patient.getDateNaissance();
+        LocalDate today = LocalDate.now();
+        var age = Period.between(dateNaissancePatient, today).getYears();
+
+        if(age < 18) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("L'age du patient doit dépasser 18 ans");
+        }
+
         patientMapper.creerPatient(patient);
+        return ResponseEntity.noContent().build();
     }
 
     @Override

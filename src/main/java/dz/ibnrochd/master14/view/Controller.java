@@ -43,8 +43,13 @@ public class Controller {
 
     // créer un nouveau patient
     @PostMapping("/patients/ajouter-patient")
-    public String creerPatient(@ModelAttribute Patient patient) {
-        patientService.creerPatient(patient);
+    public String creerPatient(@ModelAttribute Patient patient, Model model) {
+        var res = patientService.creerPatient(patient);
+
+        if(res.hasBody()) {
+            model.addAttribute("message", res.getBody());
+            return "ajouter-patient";
+        }
 
         return "redirect:/patients";
     }

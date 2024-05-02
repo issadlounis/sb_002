@@ -52,7 +52,10 @@
 
             <div class="mb-3">
                 <label for="nom" class="form-label">Date de naissance:</label>
-                <input type="date" class="form-control" id="dateNaissance" th:field="*{dateNaissance}" />
+                <input type="date" class="form-control" id="dateNaissance" th:field="*{dateNaissance}" th:classappend="${message} != null ? 'border-danger' : ''" />
+                <div class="form-text">
+                    <span th:text="${message}" class="text-danger"></span>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="nom" class="form-label">Numéro de téléphone:</label>
